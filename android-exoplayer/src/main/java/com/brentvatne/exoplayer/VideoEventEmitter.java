@@ -42,8 +42,8 @@ class VideoEventEmitter {
     private static final String EVENT_BUFFER = "onVideoBuffer";
     private static final String EVENT_IDLE = "onVideoIdle";
     private static final String EVENT_TIMED_METADATA = "onTimedMetadata";
-    private static final String EVENT_AUDIO_BECOMING_NOISY = "onVideoAudioBecomingNoisy";
-    private static final String EVENT_AUDIO_FOCUS_CHANGE = "onAudioFocusChanged";
+//    private static final String EVENT_AUDIO_BECOMING_NOISY = "onVideoAudioBecomingNoisy";
+//    private static final String EVENT_AUDIO_FOCUS_CHANGE = "onAudioFocusChanged";
     private static final String EVENT_PLAYBACK_RATE_CHANGE = "onPlaybackRateChange";
 
     static final String[] Events = {
@@ -63,8 +63,8 @@ class VideoEventEmitter {
             EVENT_BUFFER,
             EVENT_IDLE,
             EVENT_TIMED_METADATA,
-            EVENT_AUDIO_BECOMING_NOISY,
-            EVENT_AUDIO_FOCUS_CHANGE,
+//            EVENT_AUDIO_BECOMING_NOISY,
+//            EVENT_AUDIO_FOCUS_CHANGE,
             EVENT_PLAYBACK_RATE_CHANGE,
     };
 
@@ -86,8 +86,8 @@ class VideoEventEmitter {
             EVENT_BUFFER,
             EVENT_IDLE,
             EVENT_TIMED_METADATA,
-            EVENT_AUDIO_BECOMING_NOISY,
-            EVENT_AUDIO_FOCUS_CHANGE,
+//            EVENT_AUDIO_BECOMING_NOISY,
+//            EVENT_AUDIO_FOCUS_CHANGE,
             EVENT_PLAYBACK_RATE_CHANGE,
     })
     @interface VideoEvents {
@@ -146,8 +146,8 @@ class VideoEventEmitter {
         }
         event.putMap(EVENT_PROP_NATURAL_SIZE, naturalSize);
 
-        event.putArray(EVENT_PROP_AUDIO_TRACKS, audioTracks);
-        event.putArray(EVENT_PROP_TEXT_TRACKS, textTracks);
+//        event.putArray(EVENT_PROP_AUDIO_TRACKS, audioTracks);
+//        event.putArray(EVENT_PROP_TEXT_TRACKS, textTracks);
 
         // TODO: Actually check if you can.
         event.putBoolean(EVENT_PROP_FAST_FORWARD, true);
@@ -255,15 +255,15 @@ class VideoEventEmitter {
         receiveEvent(EVENT_TIMED_METADATA, event);
     }
 
-    void audioFocusChanged(boolean hasFocus) {
-        WritableMap map = Arguments.createMap();
-        map.putBoolean(EVENT_PROP_HAS_AUDIO_FOCUS, hasFocus);
-        receiveEvent(EVENT_AUDIO_FOCUS_CHANGE, map);
-    }
+//    void audioFocusChanged(boolean hasFocus) {
+//        WritableMap map = Arguments.createMap();
+//        map.putBoolean(EVENT_PROP_HAS_AUDIO_FOCUS, hasFocus);
+//        receiveEvent(EVENT_AUDIO_FOCUS_CHANGE, map);
+//    }
 
-    void audioBecomingNoisy() {
-        receiveEvent(EVENT_AUDIO_BECOMING_NOISY, null);
-    }
+//    void audioBecomingNoisy() {
+//        receiveEvent(EVENT_AUDIO_BECOMING_NOISY, null);
+//    }
 
     private void receiveEvent(@VideoEvents String type, WritableMap event) {
         eventEmitter.receiveEvent(viewId, type, event);

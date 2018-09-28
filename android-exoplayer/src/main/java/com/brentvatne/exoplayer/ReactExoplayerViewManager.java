@@ -139,35 +139,35 @@ public class ReactExoplayerViewManager extends ViewGroupManager<ReactExoplayerVi
     @ReactProp(name = PROP_SELECTED_AUDIO_TRACK)
     public void setSelectedAudioTrack(final ReactExoplayerView videoView,
                                      @Nullable ReadableMap selectedAudioTrack) {
-        String typeString = null;
-        Dynamic value = null;
-        if (selectedAudioTrack != null) {
-            typeString = selectedAudioTrack.hasKey(PROP_SELECTED_AUDIO_TRACK_TYPE)
-                    ? selectedAudioTrack.getString(PROP_SELECTED_AUDIO_TRACK_TYPE) : null;
-            value = selectedAudioTrack.hasKey(PROP_SELECTED_AUDIO_TRACK_VALUE)
-                    ? selectedAudioTrack.getDynamic(PROP_SELECTED_AUDIO_TRACK_VALUE) : null;
-        }
-        videoView.setSelectedAudioTrack(typeString, value);
+//        String typeString = null;
+//        Dynamic value = null;
+//        if (selectedAudioTrack != null) {
+//            typeString = selectedAudioTrack.hasKey(PROP_SELECTED_AUDIO_TRACK_TYPE)
+//                    ? selectedAudioTrack.getString(PROP_SELECTED_AUDIO_TRACK_TYPE) : null;
+//            value = selectedAudioTrack.hasKey(PROP_SELECTED_AUDIO_TRACK_VALUE)
+//                    ? selectedAudioTrack.getDynamic(PROP_SELECTED_AUDIO_TRACK_VALUE) : null;
+//        }
+//        videoView.setSelectedAudioTrack(typeString, value);
     }
 
     @ReactProp(name = PROP_SELECTED_TEXT_TRACK)
     public void setSelectedTextTrack(final ReactExoplayerView videoView,
                                      @Nullable ReadableMap selectedTextTrack) {
-        String typeString = null;
-        Dynamic value = null;
-        if (selectedTextTrack != null) {
-            typeString = selectedTextTrack.hasKey(PROP_SELECTED_TEXT_TRACK_TYPE)
-                    ? selectedTextTrack.getString(PROP_SELECTED_TEXT_TRACK_TYPE) : null;
-            value = selectedTextTrack.hasKey(PROP_SELECTED_TEXT_TRACK_VALUE)
-                    ? selectedTextTrack.getDynamic(PROP_SELECTED_TEXT_TRACK_VALUE) : null;
-        }
-        videoView.setSelectedTextTrack(typeString, value);
+//        String typeString = null;
+//        Dynamic value = null;
+//        if (selectedTextTrack != null) {
+//            typeString = selectedTextTrack.hasKey(PROP_SELECTED_TEXT_TRACK_TYPE)
+//                    ? selectedTextTrack.getString(PROP_SELECTED_TEXT_TRACK_TYPE) : null;
+//            value = selectedTextTrack.hasKey(PROP_SELECTED_TEXT_TRACK_VALUE)
+//                    ? selectedTextTrack.getDynamic(PROP_SELECTED_TEXT_TRACK_VALUE) : null;
+//        }
+//        videoView.setSelectedTextTrack(typeString, value);
     }
 
     @ReactProp(name = PROP_TEXT_TRACKS)
     public void setPropTextTracks(final ReactExoplayerView videoView,
                                   @Nullable ReadableArray textTracks) {
-        videoView.setTextTracks(textTracks);
+//        videoView.setTextTracks(textTracks);
     }
 
     @ReactProp(name = PROP_PAUSED, defaultBoolean = false)

@@ -31,7 +31,7 @@ public final class ExoPlayerView extends FrameLayout {
 
     private View surfaceView;
     private final View shutterView;
-    private final SubtitleView subtitleLayout;
+//    private final SubtitleView subtitleLayout;
     private final AspectRatioFrameLayout layout;
     private final ComponentListener componentListener;
     private SimpleExoPlayer player;
@@ -70,15 +70,15 @@ public final class ExoPlayerView extends FrameLayout {
         shutterView.setLayoutParams(layoutParams);
         shutterView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.black));
 
-        subtitleLayout = new SubtitleView(context);
-        subtitleLayout.setLayoutParams(layoutParams);
-        subtitleLayout.setUserDefaultStyle();
-        subtitleLayout.setUserDefaultTextSize();
+//        subtitleLayout = new SubtitleView(context);
+//        subtitleLayout.setLayoutParams(layoutParams);
+//        subtitleLayout.setUserDefaultStyle();
+//        subtitleLayout.setUserDefaultTextSize();
 
         updateSurfaceView();
 
         layout.addView(shutterView, 1, layoutParams);
-        layout.addView(subtitleLayout, 2, layoutParams);
+//        layout.addView(subtitleLayout, 2, layoutParams);
 
         addViewInLayout(layout, 0, aspectRatioParams);
     }
@@ -129,7 +129,7 @@ public final class ExoPlayerView extends FrameLayout {
             setVideoView();
             player.setVideoListener(componentListener);
             player.addListener(componentListener);
-            player.setTextOutput(componentListener);
+//            player.setTextOutput(componentListener);
         }
     }
 
@@ -188,14 +188,15 @@ public final class ExoPlayerView extends FrameLayout {
     }
 
     private final class ComponentListener implements SimpleExoPlayer.VideoListener,
-            TextRenderer.Output, ExoPlayer.EventListener {
+//            TextRenderer.Output,
+            ExoPlayer.EventListener {
 
         // TextRenderer.Output implementation
 
-        @Override
-        public void onCues(List<Cue> cues) {
-            subtitleLayout.onCues(cues);
-        }
+//        @Override
+//        public void onCues(List<Cue> cues) {
+//            subtitleLayout.onCues(cues);
+//        }
 
         // SimpleExoPlayer.VideoListener implementation
 
