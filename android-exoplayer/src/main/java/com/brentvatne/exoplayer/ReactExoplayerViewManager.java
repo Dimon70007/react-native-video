@@ -172,6 +172,7 @@ public class ReactExoplayerViewManager extends ViewGroupManager<ReactExoplayerVi
 
     @ReactProp(name = PROP_PAUSED, defaultBoolean = false)
     public void setPaused(final ReactExoplayerView videoView, final boolean paused) {
+        // DON'T START PLAYER WITH PAUSED == TRUE.IT CAUSE TO FAILS DECODE FIRST FRAME ON ANDROID 6.0
         videoView.setPausedModifier(paused);
     }
 

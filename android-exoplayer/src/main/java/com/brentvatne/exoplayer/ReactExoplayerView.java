@@ -36,6 +36,8 @@ import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
+import com.google.android.exoplayer2.extractor.ts.DefaultTsPayloadReaderFactory;
+import com.google.android.exoplayer2.extractor.ts.TsExtractor;
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer;
 import com.google.android.exoplayer2.mediacodec.MediaCodecUtil;
 import com.google.android.exoplayer2.metadata.Metadata;
@@ -292,8 +294,12 @@ class ReactExoplayerView extends FrameLayout implements
             case C.TYPE_HLS:
                 return new HlsMediaSource(uri, mediaDataSourceFactory, mainHandler, null);
             case C.TYPE_OTHER:
-                return new ExtractorMediaSource(uri, mediaDataSourceFactory, new DefaultExtractorsFactory(),
-                        mainHandler, null);
+                DefaultExtractorsFactory customFactory = new DefaultExtractorsFactory();
+                customFactory.setTsExtractorFlags(DefaultTsPayloadReaderFactory.FLAG_DETECT_ACCESS_UNITS);
+                customFactory.setTsExtractorFlags(DefaultTsPayloadReaderFactory.FLAG_ALLOW_NON_IDR_KEYFRAMES);
+                customFactory.setTsExtractorMode(TsExtractor.MODE_MULTI_PMT);
+                return new ExtractorMediaSource(uri, mediaDataSourceFactory, customFactory,mainHandler, null);
+
             default: {
                 throw new IllegalStateException("Unsupported type: " + type);
             }
@@ -391,7 +397,7 @@ class ReactExoplayerView extends FrameLayout implements
 
     private void pausePlayback() {
         if (player != null) {
-            if (player.getPlayWhenReady()) {
+            if (player.getPlayWhenReady() && player.getPlaybackState() == ExoPlayer.STATE_READY) {
                 setPlayWhenReady(false);
             }
         }
